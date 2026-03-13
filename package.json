@@ -1,19 +1,42 @@
 {
   "name": "claude-usage-view",
-  "version": "1.0.0",
-  "description": "",
-  "main": "index.js",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+  "displayName": "Claude Usage View",
+  "description": "Claude Code token usage viewer in VS Code status bar",
+  "version": "0.1.0",
+  "publisher": "umsungjun",
+  "engines": {
+    "vscode": "^1.85.0"
   },
-  "keywords": [],
-  "author": "",
-  "license": "ISC",
-  "packageManager": "pnpm@10.28.1",
+  "categories": [
+    "Other"
+  ],
+  "icon": "images/icon.png",
+  "activationEvents": [
+    "onStartupFinished"
+  ],
+  "main": "./dist/extension.js",
+  "contributes": {
+    "commands": [
+      {
+        "command": "claude-usage-view.show",
+        "title": "Claude: Show Usage"
+      }
+    ]
+  },
+  "scripts": {
+    "compile": "node esbuild.mjs",
+    "watch": "node esbuild.mjs --watch",
+    "package": "pnpm run compile && vsce package --no-dependencies",
+    "vscode:prepublish": "pnpm run compile",
+    "format": "prettier --write \"src/**/*.ts\" \"*.{mjs,json}\""
+  },
   "devDependencies": {
-    "@types/vscode": "^1.110.0",
+    "@types/vscode": "^1.85.0",
     "@vscode/vsce": "^3.7.1",
     "esbuild": "^0.27.4",
+    "prettier": "^3.8.1",
+    "sharp": "^0.34.5",
     "typescript": "^5.9.3"
-  }
+  },
+  "packageManager": "pnpm@10.28.1"
 }
