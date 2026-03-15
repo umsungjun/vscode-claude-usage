@@ -21,7 +21,25 @@
         "command": "vscode-claude-usage.show",
         "title": "Claude: Show Usage"
       }
-    ]
+    ],
+    "viewsContainers": {
+      "activitybar": [
+        {
+          "id": "claude-usage",
+          "title": "Claude Usage",
+          "icon": "images/icon.svg"
+        }
+      ]
+    },
+    "views": {
+      "claude-usage": [
+        {
+          "id": "claude-usage.usageView",
+          "name": "Usage",
+          "icon": "images/icon.svg"
+        }
+      ]
+    }
   },
   "scripts": {
     "compile": "node esbuild.mjs",
