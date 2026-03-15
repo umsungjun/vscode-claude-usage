@@ -18,7 +18,7 @@ export class UsageWebviewPanel {
     }
 
     this.panel = vscode.window.createWebviewPanel(
-      'claude-usage-view',
+      'vscode-claude-usage',
       'Claude Usage',
       vscode.ViewColumn.One,
       { enableScripts: false, retainContextWhenHidden: true }
@@ -179,7 +179,7 @@ function buildHtml(stats: Stats): string {
 
 function errorHtml(): string {
   return `<!DOCTYPE html><html><body style="font-family:sans-serif;padding:20px">
-  <h2>Claude Usage View</h2>
+  <h2>VSCode Claude Usage</h2>
   <p>Could not read <code>~/.claude/stats-cache.json</code>.</p>
   <p>Make sure Claude Code CLI has been used at least once.</p>
   </body></html>`;

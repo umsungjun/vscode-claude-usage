@@ -21,7 +21,7 @@ export function activate(context: vscode.ExtensionContext): void {
     UsageWebviewPanel.refresh();
   });
 
-  const showCommand = vscode.commands.registerCommand('claude-usage-view.show', () =>
+  const showCommand = vscode.commands.registerCommand('vscode-claude-usage.show', () =>
     UsageWebviewPanel.show(context)
   );
 

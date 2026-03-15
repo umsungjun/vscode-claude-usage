@@ -13,7 +13,7 @@ export class ClaudeStatusBar implements vscode.Disposable {
 
   constructor() {
     this.item = vscode.window.createStatusBarItem(vscode.StatusBarAlignment.Right, 100);
-    this.item.command = 'claude-usage-view.show';
+    this.item.command = 'vscode-claude-usage.show';
     this.refresh();
     this.item.show();
   }

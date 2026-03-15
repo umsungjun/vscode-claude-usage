@@ -1,6 +1,6 @@
 {
-  "name": "claude-usage-view",
-  "displayName": "Claude Usage View",
+  "name": "vscode-claude-usage",
+  "displayName": "VSCode Claude Usage",
   "description": "Claude Code token usage viewer in VS Code status bar",
   "version": "0.1.0",
   "publisher": "umsungjun",
@@ -18,7 +18,7 @@
   "contributes": {
     "commands": [
       {
-        "command": "claude-usage-view.show",
+        "command": "vscode-claude-usage.show",
         "title": "Claude: Show Usage"
       }
     ]
