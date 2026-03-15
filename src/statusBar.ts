@@ -21,13 +21,13 @@ export class ClaudeStatusBar implements vscode.Disposable {
   refresh(): void {
     const stats = readStats();
     if (!stats) {
-      this.item.text = '$(eye) Claude: N/A';
+      this.item.text = '✴ Claude: N/A';
       this.item.tooltip = 'stats-cache.json not found (~/.claude/)';
       return;
     }
 
     const todayTokens = getTodayTokens(stats);
-    this.item.text = `$(eye) ${formatTokens(todayTokens)}`;
+    this.item.text = `✴ ${formatTokens(todayTokens)}`;
     this.item.tooltip = buildTooltip(stats, todayTokens);
   }
 
@@ -41,7 +41,7 @@ function buildTooltip(stats: Stats, todayTokens: number): vscode.MarkdownString 
   md.isTrusted = true;
   md.supportThemeIcons = true;
 
-  md.appendMarkdown('### $(eye) Claude Usage Today\n\n');
+  md.appendMarkdown('### ✴ Claude Usage Today\n\n');
   md.appendMarkdown('---\n\n');
 
   // Per-model breakdown for today
