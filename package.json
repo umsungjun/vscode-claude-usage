@@ -4,6 +4,7 @@
   "description": "Claude Code token usage viewer in VS Code status bar",
   "version": "0.1.0",
   "publisher": "umsungjun",
+  "license": "MIT",
   "engines": {
     "vscode": "^1.85.0"
   },
@@ -36,7 +37,7 @@
         {
           "id": "claude-usage.usageView",
           "name": "Usage",
-          "icon": "images/icon.svg"
+          "type": "webview"
         }
       ]
     }
@@ -49,6 +50,7 @@
     "format": "prettier --write \"src/**/*.ts\" \"*.{mjs,json}\""
   },
   "devDependencies": {
+    "@types/node": "^25.5.0",
     "@types/vscode": "^1.85.0",
     "@vscode/vsce": "^3.7.1",
     "esbuild": "^0.27.4",
