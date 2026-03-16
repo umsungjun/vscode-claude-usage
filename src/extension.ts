@@ -3,13 +3,15 @@ import * as path from 'path';
 
 import * as vscode from 'vscode';
 
-import { ClaudeStatusBar } from './statusBar';
-import { UsageWebviewPanel } from './webviewPanel';
+import { startAutoRefresh } from './dataCache';
+import { UsageSidebarProvider, UsageWebviewPanel } from './webviewPanel';
 
 export function activate(context: vscode.ExtensionContext): void {
-  const statusBar = new ClaudeStatusBar();
+  startAutoRefresh();
 
-  // Auto-refresh status bar and webview when stats-cache.json changes
+  const sidebarProvider = new UsageSidebarProvider();
+
+  // Re-render when stats-cache.json changes
   const watcher = vscode.workspace.createFileSystemWatcher(
     new vscode.RelativePattern(
       vscode.Uri.file(path.join(os.homedir(), '.claude')),
@@ -17,7 +19,7 @@ export function activate(context: vscode.ExtensionContext): void {
     )
   );
   watcher.onDidChange(() => {
-    statusBar.refresh();
+    sidebarProvider.refresh();
     UsageWebviewPanel.refresh();
   });
 
@@ -25,7 +27,11 @@ export function activate(context: vscode.ExtensionContext): void {
     UsageWebviewPanel.show(context)
   );
 
-  context.subscriptions.push(statusBar, watcher, showCommand);
+  context.subscriptions.push(
+    vscode.window.registerWebviewViewProvider(UsageSidebarProvider.viewId, sidebarProvider),
+    watcher,
+    showCommand
+  );
 }
 
 export function deactivate(): void {}
